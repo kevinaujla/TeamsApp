@@ -1,0 +1,28 @@
+{
+  "name": "teams",
+  "version": "1.0.0",
+  "description": "TradeShift Candidate Exercise",
+  "main": "Gulpfile.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.1",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinaujla/TeamsApp.git"
+  },
+  "author": "Kevin Aujla",
+  "license": "MIT"
+}
