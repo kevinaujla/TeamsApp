@@ -26,12 +26,12 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('./client/'))
 });
 
-gulp.task('deployScripts', function () {
-  gulp.src(['./client/app.js', './client/script/**/*.js'])
-    .pipe(concat('scripts.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./client/'))
-});
+// gulp.task('deployScripts', function () {
+//   gulp.src(['./client/app.js', './client/script/**/*.js'])
+//     .pipe(concat('scripts.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('./client/'))
+// });
 
 // SASS
 gulp.task('sass', function () {

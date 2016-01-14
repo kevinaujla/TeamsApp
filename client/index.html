@@ -15,7 +15,13 @@
 		 <div class="col-md-3">
 		 	<h2>Stark Co</h2>
 		 	<h4><span class="glyphicon glyphicon-certificate"></span>Catelyn Logged In</h4> 
-		 	<h3>Teams<span class="glyphicon glyphicon-plus-sign"></span></h3>
+
+		 	<h3>Teams
+
+		 		<a ng-controller="addTeamController" ng-click="addTeam()" class="glyphicon glyphicon-plus-sign"></a>
+
+		 	</h3>
+
 		 	<h5><span class="glyphicon glyphicon-list"></span>Sales</h5> 
 		 	<h5><span class="glyphicon glyphicon-list"></span>Fiance</h5>
 		 	<h5><span class="glyphicon glyphicon-list"></span>Marketing</h5>
@@ -27,6 +33,10 @@
 		 </div>
  		 <div class="col-md-9">Chat</div>
  	</div>
+
+
+<!-- <ui-view> -->
+
 
   <!-- Bower Component Scripts -->
   <script src="lib/angular/angular.min.js"></script>
