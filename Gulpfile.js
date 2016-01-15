@@ -52,7 +52,7 @@ gulp.task('autoprefixer', function () {
 
 gulp.task('nodemon', function () {
   nodemon({
-    script: 'server.js',
+    script: './server/server.js',
     ext: 'js html',
     env: {
       'NODE_ENV': 'development'

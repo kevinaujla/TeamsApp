@@ -1,21 +1,25 @@
 /*
 
-addTeamController.js
-create a team
+teamDetailsController.js
+display team details
 
 */
 
-angular.module('App.addTeamController', [])
+angular.module('App.teamDetailsController', [])
 
-.controller('addTeamController', function ($scope, $uibModal, $log) {
+.controller('teamDetailsController', function ($scope, $uibModal, $log) {
+
+	$scope.hello=function(){
+		console.log("hello");
+	};
 
   	$scope.animationsEnabled = true;
 
 	  $scope.open = function (size) {
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
-	      templateUrl: 'script/module/addTeam/addTeamController.html',
-	      controller: 'ModalInstanceCtrl',
+	      templateUrl: 'script/module/teamDetails/teamDetails.html',
+	      controller: 'ModalCtrl',
 	      size: size,
 	      resolve: {
 	        items: function () {
@@ -38,15 +42,15 @@ angular.module('App.addTeamController', [])
 
 })
 
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, teamFactory) {
+.controller('ModalCtrl', function ($scope, $uibModalInstance, items, teamFactory) {
 
-  $scope.teamName=null;
+  // $scope.teamName=null;
 
-  $scope.createTeam=function(){
+  // $scope.createTeam=function(){
 
-  	teamFactory.createTeam($scope.teamName);
+  // 	teamFactory.createTeam($scope.teamName);
 
-  };
+  // };
 
   $scope.ok = function () {
     $uibModalInstance.close($scope.selected.item);

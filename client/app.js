@@ -8,7 +8,9 @@
 angular.module('App', [
 	'ui.router',
   'ui.bootstrap',
-	'App.addTeamController'
+	'App.addTeamController',
+  'App.teamDetailsController',
+  'App.teamFactory'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -23,6 +25,12 @@ angular.module('App', [
       templateUrl: 'script/module/addTeam/addTeamController.html',
       controller: 'addTeamController',
       controllerAs: 'addTeamController'
+    })
+    .state('teamDetailsController', {
+      url: '/teamDetailsController',
+      templateUrl: 'script/module/teamDetails/teamDetails.html',
+      controller: 'teamDetailsController',
+      controllerAs: 'teamDetailsController'
     })
 
 
