@@ -7,6 +7,7 @@
 
 angular.module('App', [
 	'ui.router',
+  'ui.bootstrap',
 	'App.addTeamController'
 ])
 
