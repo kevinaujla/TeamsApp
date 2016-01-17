@@ -6,11 +6,14 @@
 // */
 
 angular.module('App', [
+  'ngAnimate',
 	'ui.router',
   'ui.bootstrap',
+  'App.usersController',
 	'App.addTeamController',
   'App.teamDetailsController',
-  'App.teamFactory'
+  'App.teamFactory',
+  'App.userFactory'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -32,6 +35,11 @@ angular.module('App', [
       controller: 'teamDetailsController',
       controllerAs: 'teamDetailsController'
     })
-
+    .state('usersController', {
+      url: '/usersController',
+      templateUrl: 'script/module/users/users.html',
+      controller: 'usersController',
+      controllerAs: 'usersController'
+    })
 
 }]);

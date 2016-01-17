@@ -1,27 +1,27 @@
 /*
 
-teamDetailsController.js
-display team details
+usersController.js
+add/remove users
 
 */
 
-angular.module('App.teamDetailsController', [])
+angular.module('App.usersController', [])
 
-.controller('teamDetailsController', function ($scope, $uibModal) {
+.controller('usersController', function ($scope, $uibModal) {
 
   	$scope.animationsEnabled = true;
 
 	  $scope.open = function (size) {
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
-	      templateUrl: 'script/module/teamDetails/teamDetails.html',
-	      controller: 'ModalCtrl',
+	      templateUrl: 'script/module/users/users.html',
+	      controller: 'ModalInstanceCtrl',
 	      size: size
 	    });
 	  };
 })
 
-.controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory) {
+.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
   $scope.ok = function () {
     $uibModalInstance.close();

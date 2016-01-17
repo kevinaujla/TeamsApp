@@ -9,8 +9,8 @@ angular.module('App.teamFactory', [])
 
 .factory('teamFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
 
-var createTeam = function (team) {
-    var obj = {team : team};
+var createTeam = function (team, details) {
+    var obj = {team : team, details: details};
     console.log('sending team : ', obj);
     return $http({
         method: 'POST',

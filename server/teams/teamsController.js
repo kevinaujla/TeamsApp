@@ -41,7 +41,7 @@ module.exports = {
     // Console Log
     console.log('CREATE NEW TEAM');
 
-    console.log('req : ', req.body.team);
+    console.log('req : ', req.body);
 
     // Create Promise
     var findOne = Q.nbind(Team.findOne, Team); // find team in DB
@@ -56,6 +56,7 @@ module.exports = {
           // Create Object
           var newTeam = {
             teamName : req.body.team,
+            teamDetails: req.body.details
           };
           return create(newTeam);
         }
