@@ -13,18 +13,18 @@ module.exports = {
   ***/
   getTeamInfo : function(req, res, next){
     // Console Log
-    console.log('Get Team Info : ', req.query.teamName);
+    console.log('Get Team Info : ', req.query);
     // Create Promise
-    var findUser = Q.nbind(User.findOne, Team);
+    var findTeam = Q.nbind(Team.find, Team);
     // Mongoose Query
-    findUser({ 'Team' : req.query.teamName })
+    findTeam({ 'Team' : req.query.teamName })
       .then(function(Team){
         if(!Team) {
           // Propogate Error to Client
           throw(new Error('Team could not be found'));
         } else {
           // Console Log
-          console.log('Team retreived from DB : ', Team);
+          console.log('Teams retreived from DB : ', Team);
           // Propogate Data to Client
           res.send(Team);
         }

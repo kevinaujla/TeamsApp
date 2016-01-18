@@ -23,6 +23,7 @@ var createTeam = function (team, details) {
   };	
 
   var getTeamInfo = function () {
+    console.log('teamFactory getTeamInfo');
     return $http({
         method: 'GET',
         url: '/api/teams',

@@ -7,7 +7,9 @@ display team details
 
 angular.module('App.teamDetailsController', [])
 
-.controller('teamDetailsController', function ($scope, $uibModal) {
+.controller('teamDetailsController', function ($scope, $uibModal, teamFactory) {
+
+	var self=this;
 
   	$scope.animationsEnabled = true;
 
@@ -19,6 +21,17 @@ angular.module('App.teamDetailsController', [])
 	      size: size
 	    });
 	  };
+
+	   $scope.loadTeams = function () {
+    	teamFactory.getTeamInfo()
+      	.then(function (teams) {
+  		self.teamDetails=teams;
+  		console.log(self.teamDetails);
+      	})
+     	 .catch(function (err) {
+        console.log('error loading teams!', err);
+      	});
+  };
 })
 
 .controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory) {
