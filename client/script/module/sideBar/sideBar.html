@@ -7,8 +7,8 @@
 		<a href="" ng-controller="addTeamController" ng-click="open()" class="glyphicon glyphicon-plus-sign"></a>
 	</h3>
 
-	<div ng-repeat="team in teamDetails">
-	  <a href="" ng-controller="teamDetailsController" ng-click="open('med', team)" class="glyphicon glyphicon-list"> {{team.teamName}}</a>
+	<div ng-repeat="team in teamDetails" class="teamName">
+	  <a href="" ng-controller="teamDetailsController" ng-click="open('med', team)" class="glyphicon glyphicon-list"></a> {{team.teamName}}
 	</div>
 </div>
 

@@ -1,0 +1,42 @@
+.modal-body {
+    position: relative;
+    padding: 0px 0px 5px 15px;
+}
+
+.modal-title {
+    color: black;
+    margin: 0;
+    text-align: center;
+    font-family: visby;
+    font-size: 32px;
+    padding: 0px;
+}
+
+h3.tdModalFont {
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+h5.tdModalFont {
+    color: black;
+    margin-top: 0px;
+}
+
+a.tdModalFont {
+    color: black;
+}
+
+.tdModalFont.ng-binding.ng-scope {
+    color: black;
+}
+
+a.glyphicon.glyphicon-minus-sign{
+    padding-right: 5px;
+    color: #F56868;
+}
+
+a.glyphicon.glyphicon-minus-sign:hover{
+    text-decoration: none;
+    color:red;
+}

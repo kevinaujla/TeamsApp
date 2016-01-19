@@ -21,18 +21,18 @@ angular.module('App.addTeamController', [])
 	  };
 })
 
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, teamFactory) {
+.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, teamFactory, $window) {
 
   $scope.teamName=null;
   $scope.teamDetails=null;
 
   $scope.createTeam=function(){
   	teamFactory.createTeam($scope.teamName, $scope.teamDetails)
+    .then(function(){
+      console.log("team created");
+      $window.location.reload();
+    });
   	$uibModalInstance.close();
-  };
-
-  $scope.ok = function () {
-    $uibModalInstance.close();
   };
 
   $scope.cancel = function () {

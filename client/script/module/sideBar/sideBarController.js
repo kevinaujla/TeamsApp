@@ -13,7 +13,6 @@ angular.module('App.sideBarController', [])
     	teamFactory.getTeamInfo()
       	.then(function (teams) {
   		$scope.teamDetails=teams;
-  		console.log($scope.teamDetails);
       	})
      	.catch(function (err) {
         console.log('error loading teams!', err);
