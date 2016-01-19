@@ -35,16 +35,18 @@ angular.module('App.teamFactory', [])
     })
   };
 
-  // var removeUser=function(user, team){
-  //   var obj = {user : user, team : team};
-  //   console.log("sending user:", obj);
-  //   return $http({
-          
-  //   })
-  //   .then(function(resp){
-  //     return resp.data;
-  //   })
-  // };
+  var removeUser = function(user, team){
+    var obj = {user : user, team : team};
+    console.log("sending user:", obj);
+    return $http({
+        method: 'POST',
+        url: 'api/teams/removeUser',
+        data: obj
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
 
   var getTeamInfo = function () {
     return $http({
@@ -60,6 +62,7 @@ angular.module('App.teamFactory', [])
     createTeam: createTeam,
     addUser: addUser,
     getTeamInfo: getTeamInfo,
+    removeUser: removeUser
   };
 
 }]);

@@ -18,7 +18,7 @@
         </h3>
 
         <div ng-repeat="user in teamDetails.userName">
-        <a href="" ng-controller="teamDetailsController" ng-click="remove(user)" class="glyphicon glyphicon-minus-sign"> {{user}}</a>
+        <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"> {{user}}</a>
         </div>
 
     </div>

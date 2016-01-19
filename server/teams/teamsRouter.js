@@ -17,4 +17,6 @@ module.exports = function(app){
 
  app.post('/addUser', teamsController.addUser);
 
+ app.post('/removeUser', teamsController.removeUser);
+
 };

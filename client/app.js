@@ -13,6 +13,7 @@ angular.module('App', [
   'App.sideBarController',
 	'App.addTeamController',
   'App.teamDetailsController',
+  'App.chatRoomController',
   'App.teamFactory'
 ])
 
@@ -26,7 +27,7 @@ angular.module('App', [
       url: '/addTeamController',
       templateUrl: 'script/module/addTeam/addTeamController.html',
       controller: 'addTeamController',
-      controllerAs: 'addTeamController'
+      controllerAs: 'addTeamController',
     })
     .state('teamDetailsController', {
       url: '/teamDetailsController',
@@ -41,8 +42,16 @@ angular.module('App', [
     })
     .state('sideBarController', {
       url: '/',
-      templateUrl: 'script/module/sideBar/sideBar.html',
-      controller: 'sideBarController'
+      views: {
+        'sideNav': { 
+          templateUrl: 'script/module/sideBar/sideBar.html',
+          controller: 'sideBarController'
+        },
+        'main': { 
+          templateUrl: 'script/module/chatRoom/chatRoom.html',
+          controller: 'chatRoomController'          
+        }
+      },
     })
 
 }]);

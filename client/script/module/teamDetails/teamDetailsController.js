@@ -38,10 +38,10 @@ angular.module('App.teamDetailsController', [])
     $uibModalInstance.dismiss('cancel');
   };
 
-   $scope.remove=function(user){
-    console.log("remove:", user);
-    // teamFactory.removeUser($scope.userName, name);
-  }
+   $scope.remove=function(user, team){
+    console.log("remove:", user, team);
+    teamFactory.removeUser(user, team);
+  };
 
   $scope.teamDetails=name;
  

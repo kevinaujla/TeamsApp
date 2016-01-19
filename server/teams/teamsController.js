@@ -13,7 +13,7 @@ module.exports = {
   ***/
   getTeamInfo : function(req, res, next){
     // Console Log
-    console.log('Get Team Info : ', req.query);
+    // console.log('Get Team Info : ', req.query);
     // Create Promise
     var findTeam = Q.nbind(Team.find, Team);
     // Mongoose Query
@@ -24,7 +24,7 @@ module.exports = {
           throw(new Error('Team could not be found'));
         } else {
           // Console Log
-          console.log('Teams retreived from DB : ', Team);
+          // console.log('Teams retreived from DB : ', Team);
           // Propogate Data to Client
           res.send(Team);
         }
@@ -39,9 +39,9 @@ module.exports = {
   ***/
   createTeams : function(req, res, next) {
     // Console Log
-    console.log('CREATE NEW TEAM');
+    // console.log('CREATE NEW TEAM');
 
-    console.log('req : ', req.body);
+    // console.log('req : ', req.body);
 
     // Create Promise
     var findOne = Q.nbind(Team.findOne, Team); // find team in DB
@@ -64,31 +64,74 @@ module.exports = {
       .then(function(newTeamCreated){
         // Console Log
         res.status(200).send();
-        console.log('New Team Stored in DB : ', newTeamCreated);
+        // console.log('New Team Stored in DB : ', newTeamCreated);
       })
   },
 
   addUser : function(req, res, next) {
 
-    console.log('add new user');
+    // console.log('add new user');
 
-    console.log('req :', req.body);
+    // console.log('req :', req.body);
 
-    // Create New Object
-    var userUpdate = {
-      userName : req.body.user,
-    };
     // Create Promise
-    var findTeamUpdate = Q.nbind(Team.findOneAndUpdate, Team);
+    var findTeam = Q.nbind(Team.findOne, Team);
     // Mongoose Query
-    findTeamUpdate({'teamName' : req.body.team }, userUpdate )
-      .then(function(data) {
-        // Console Log
-        console.log('Updated User in DB :', req.body.user);
+    findTeam({'teamName' : req.body.team })
+      .then(function(team) {
+
+        // Create New Object
+        var userUpdate = {
+          userName : req.body.user,
+        };
+
+        var update = Q.nbind(Team.findByIdAndUpdate, Team);
+
+        return update(team._id, {
+          userName : team.userName.concat([req.body.user])
+        });
+
+        console.log('Update....');
+
+      })
+      .then(function(data){
+        console.log('DATA AFTER : ', data);
+        res.json(data);
       })
       .catch(function(err){
         // Propogate Error to Client
         res.status(404).send({error : err.message});
+      });
+  },
+
+  removeUser : function(req, res, next) {
+
+    var findTeam = Q.nbind(Team.findOne, Team);
+
+    findTeam({'teamName' : req.body.team })
+      .then(function(team){
+
+        var indexToRemove = team.userName.indexOf(req.body.user);
+        if (indexToRemove > -1) {
+          team.userName.splice(indexToRemove, 1);
+        }
+
+        console.log('replace with : ', team.userName);
+
+        var update = Q.nbind(Team.findByIdAndUpdate, Team);
+
+        return update(team._id, {
+          userName : team.userName
+        });
+
+      })
+      .then(function(data){
+        console.log('DATA AFTER : ', data);
+        res.json(data);
+      })
+      .catch(function(err){
+        // Propogate Error to Client
+          res.status(404).send({error : err.message});
       });
   }
 
