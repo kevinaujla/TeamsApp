@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 var teamSchema = new Schema({
 
  teamName : String,
- teamDetails: String
+ teamDetails: String,
+ userName: [String]
 
 });
 

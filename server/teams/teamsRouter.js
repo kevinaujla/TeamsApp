@@ -15,4 +15,6 @@ module.exports = function(app){
 
  app.post('/create', teamsController.createTeams);
 
+ app.post('/addUser', teamsController.addUser);
+
 };

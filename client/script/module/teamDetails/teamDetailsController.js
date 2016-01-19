@@ -9,32 +9,26 @@ angular.module('App.teamDetailsController', [])
 
 .controller('teamDetailsController', function ($scope, $uibModal, teamFactory) {
 
-	var self=this;
 
   	$scope.animationsEnabled = true;
 
-	  $scope.open = function (size) {
+	  $scope.open = function (size, name) {
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/teamDetails/teamDetails.html',
 	      controller: 'ModalCtrl',
-	      size: size
+	      size: size,
+        resolve: {
+          name: function() {
+            return name;
+          }
+        }
 	    });
 	  };
 
-	   $scope.loadTeams = function () {
-    	teamFactory.getTeamInfo()
-      	.then(function (teams) {
-  		self.teamDetails=teams;
-  		console.log(self.teamDetails);
-      	})
-     	 .catch(function (err) {
-        console.log('error loading teams!', err);
-      	});
-  };
 })
 
-.controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory) {
+.controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory, name) {
 
   $scope.ok = function () {
     $uibModalInstance.close();
@@ -43,4 +37,12 @@ angular.module('App.teamDetailsController', [])
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
+
+   $scope.remove=function(user){
+    console.log("remove:", user);
+    // teamFactory.removeUser($scope.userName, name);
+  }
+
+  $scope.teamDetails=name;
+ 
 });

@@ -11,17 +11,29 @@ angular.module('App.usersController', [])
 
   	$scope.animationsEnabled = true;
 
-	  $scope.open = function (size) {
+	  $scope.open = function (size, name) {
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/users/users.html',
-	      controller: 'ModalInstanceCtrl',
-	      size: size
+	      controller: 'UserModalCtrl',
+	      size: size,
+        resolve: {
+          name: function() {
+            return name;
+          }
+        }
 	    });
 	  };
 })
 
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
+.controller('UserModalCtrl', function ($scope, $uibModalInstance, teamFactory, name) {
+
+  $scope.userName=null;
+
+  $scope.addUser=function(){
+  	teamFactory.addUser($scope.userName, name);
+  	$uibModalInstance.close();
+  };
 
   $scope.ok = function () {
     $uibModalInstance.close();

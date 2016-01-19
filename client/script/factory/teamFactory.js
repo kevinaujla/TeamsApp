@@ -9,7 +9,7 @@ angular.module('App.teamFactory', [])
 
 .factory('teamFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
 
-var createTeam = function (team, details) {
+  var createTeam = function (team, details) {
     var obj = {team : team, details: details};
     console.log('sending team : ', obj);
     return $http({
@@ -22,8 +22,31 @@ var createTeam = function (team, details) {
       });
   };	
 
+  var addUser = function(user, team) {
+    var obj = {user : user, team: team};
+    console.log("sending user:", obj);
+    return $http({
+        method:'POST',
+        url : 'api/teams/addUser',
+        data: obj
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
+
+  // var removeUser=function(user, team){
+  //   var obj = {user : user, team : team};
+  //   console.log("sending user:", obj);
+  //   return $http({
+          
+  //   })
+  //   .then(function(resp){
+  //     return resp.data;
+  //   })
+  // };
+
   var getTeamInfo = function () {
-    console.log('teamFactory getTeamInfo');
     return $http({
         method: 'GET',
         url: '/api/teams',
@@ -35,6 +58,7 @@ var createTeam = function (team, details) {
 
   return {
     createTeam: createTeam,
+    addUser: addUser,
     getTeamInfo: getTeamInfo,
   };
 

@@ -27,7 +27,7 @@ angular.module('App.addTeamController', [])
   $scope.teamDetails=null;
 
   $scope.createTeam=function(){
-  	teamFactory.createTeam($scope.teamName, $scope.teamDetails);
+  	teamFactory.createTeam($scope.teamName, $scope.teamDetails)
   	$uibModalInstance.close();
   };
 

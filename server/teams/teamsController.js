@@ -63,8 +63,33 @@ module.exports = {
       })
       .then(function(newTeamCreated){
         // Console Log
+        res.status(200).send();
         console.log('New Team Stored in DB : ', newTeamCreated);
       })
+  },
+
+  addUser : function(req, res, next) {
+
+    console.log('add new user');
+
+    console.log('req :', req.body);
+
+    // Create New Object
+    var userUpdate = {
+      userName : req.body.user,
+    };
+    // Create Promise
+    var findTeamUpdate = Q.nbind(Team.findOneAndUpdate, Team);
+    // Mongoose Query
+    findTeamUpdate({'teamName' : req.body.team }, userUpdate )
+      .then(function(data) {
+        // Console Log
+        console.log('Updated User in DB :', req.body.user);
+      })
+      .catch(function(err){
+        // Propogate Error to Client
+        res.status(404).send({error : err.message});
+      });
   }
 
 };

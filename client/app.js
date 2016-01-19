@@ -10,17 +10,16 @@ angular.module('App', [
 	'ui.router',
   'ui.bootstrap',
   'App.usersController',
+  'App.sideBarController',
 	'App.addTeamController',
   'App.teamDetailsController',
-  'App.teamFactory',
-  'App.userFactory'
+  'App.teamFactory'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
 	$urlRouterProvider
     	.otherwise('/');
-
 
   $stateProvider
     .state('addTeamController', {
@@ -32,14 +31,18 @@ angular.module('App', [
     .state('teamDetailsController', {
       url: '/teamDetailsController',
       templateUrl: 'script/module/teamDetails/teamDetails.html',
-      controller: 'teamDetailsController',
-      controllerAs: 'teamDetailsController'
+      controller: 'teamDetailsController'
     })
     .state('usersController', {
       url: '/usersController',
       templateUrl: 'script/module/users/users.html',
       controller: 'usersController',
       controllerAs: 'usersController'
+    })
+    .state('sideBarController', {
+      url: '/',
+      templateUrl: 'script/module/sideBar/sideBar.html',
+      controller: 'sideBarController'
     })
 
 }]);

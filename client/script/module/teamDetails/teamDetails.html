@@ -6,12 +6,22 @@
         </div>
         <div class="modal-body">
            
+  
+        <div>
 
-        	<ul ng-init="teamDetailsController.loadTeams()">
-                <a href="" ng-controller="teamDetailsController" ng-click="loadTeams()" class="glyphicon glyphicon-plus-sign"></a>
-            <ul>
+        <h3>{{teamDetails.teamName}}</h3>
+        <h5>{{teamDetails.teamDetails}}</h5>
+        
 
+        <h3>Users
+        <a href="" ng-controller="usersController" ng-click="open('sm', teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
+        </h3>
 
+        <div ng-repeat="user in teamDetails.userName">
+        <a href="" ng-controller="teamDetailsController" ng-click="remove(user)" class="glyphicon glyphicon-minus-sign"> {{user}}</a>
+        </div>
+
+    </div>
          </div>
 
         <div class="modal-footer">
