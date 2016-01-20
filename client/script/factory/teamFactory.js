@@ -35,7 +35,6 @@ angular.module('App.teamFactory', [])
 
   var taskComplete = function(task, team){
     var obj = {task : task, team : team};
-    console.log("completed:", obj);
     return $http({
         method: 'POST',
         url: 'api/teams/taskComplete',

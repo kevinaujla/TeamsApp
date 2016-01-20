@@ -31,7 +31,6 @@ angular.module('App.tasksController', [])
   $scope.task=null;
 
   $scope.createTask=function(){
-  	console.log("hi");
   	teamFactory.createTask($scope.task, name)
     .then(function(){
       var obj=loadingService.teamDetails;

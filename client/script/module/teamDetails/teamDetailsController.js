@@ -27,7 +27,7 @@ angular.module('App.teamDetailsController', [])
 
 })
 
-.controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory, name) {
+.controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory, name, loadingService) {
 
   $scope.ok = function () {
     $uibModalInstance.close();
@@ -38,18 +38,40 @@ angular.module('App.teamDetailsController', [])
   };
 
    $scope.remove=function(user, team){
-    console.log("remove:", user, team);
     teamFactory.removeUser(user, team)
-    .then(function(data){
-      console.log("remove sucess:",data);
+    .then(function(){
+
+      var obj=loadingService.teamDetails;
+      for(var i=0; i<obj.length; i++){
+        for(var key in obj[i]){
+          if(obj[i][key] === team){
+            var indexToRemove = obj[i]["userName"].indexOf(user);
+            if (indexToRemove > -1) {
+            obj[i]["userName"].splice(indexToRemove, 1);
+            }
+          }
+        }
+      }
+
     });
   };
 
   $scope.taskComplete=function(task, team){
-    console.log("completed:", task, team);
     teamFactory.taskComplete(task, team)
-    .then(function(data){
-      console.log("complete sucess:",data);
+    .then(function(){
+
+      var obj=loadingService.teamDetails;
+      for(var i=0; i<obj.length; i++){
+        for(var key in obj[i]){
+          if(obj[i][key] === team){
+            var indexToRemove = obj[i]["tasks"].indexOf(task);
+            if (indexToRemove > -1) {
+            obj[i]["tasks"].splice(indexToRemove, 1);
+            }
+          }
+        }
+      }
+
     });
   };
 
