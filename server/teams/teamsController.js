@@ -85,6 +85,36 @@ module.exports = {
 
   },
 
+  taskComplete : function(req, res, next) {
+
+    var findTeam = Q.nbind(Team.findOne, Team);
+
+    findTeam({'teamName' : req.body.team })
+      .then(function(team){
+
+        var indexToRemove = team.tasks.indexOf(req.body.task);
+        if (indexToRemove > -1) {
+          team.tasks.splice(indexToRemove, 1);
+        }
+
+        console.log('replace with : ', team.tasks);
+
+        var update = Q.nbind(Team.findByIdAndUpdate, Team);
+
+        return update(team._id, {
+          tasks : team.tasks
+        });
+
+      })
+      .then(function(data){
+        res.json(data);
+      })
+      .catch(function(err){
+        // Propogate Error to Client
+          res.status(404).send({error : err.message});
+      });
+  },
+
   addUser : function(req, res, next) {
     // Create Promise
     var findTeam = Q.nbind(Team.findOne, Team);

@@ -11,7 +11,6 @@ angular.module('App.teamFactory', [])
 
   var createTeam = function (team, details) {
     var obj = {team : team, details: details};
-    console.log('sending team : ', obj);
     return $http({
         method: 'POST',
         url: '/api/teams/create',
@@ -24,7 +23,6 @@ angular.module('App.teamFactory', [])
 
   var createTask = function (task, team) {
     var obj = {task : task, team: team};
-    console.log('sending team : ', obj);
     return $http({
         method: 'POST',
         url: '/api/teams/createTask',
@@ -35,9 +33,21 @@ angular.module('App.teamFactory', [])
       });
   };  	
 
+  var taskComplete = function(task, team){
+    var obj = {task : task, team : team};
+    console.log("completed:", obj);
+    return $http({
+        method: 'POST',
+        url: 'api/teams/taskComplete',
+        data: obj
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
+
   var addUser = function(user, team) {
     var obj = {user : user, team: team};
-    console.log("sending user:", obj);
     return $http({
         method:'POST',
         url : 'api/teams/addUser',
@@ -50,7 +60,6 @@ angular.module('App.teamFactory', [])
 
   var removeUser = function(user, team){
     var obj = {user : user, team : team};
-    console.log("sending user:", obj);
     return $http({
         method: 'POST',
         url: 'api/teams/removeUser',
@@ -74,6 +83,7 @@ angular.module('App.teamFactory', [])
   return {
     createTeam: createTeam,
     createTask: createTask,
+    taskComplete: taskComplete,
     addUser: addUser,
     getTeamInfo: getTeamInfo,
     removeUser: removeUser

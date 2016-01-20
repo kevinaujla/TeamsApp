@@ -45,6 +45,14 @@ angular.module('App.teamDetailsController', [])
     });
   };
 
+  $scope.taskComplete=function(task, team){
+    console.log("completed:", task, team);
+    teamFactory.taskComplete(task, team)
+    .then(function(data){
+      console.log("complete sucess:",data);
+    });
+  };
+
   $scope.teamDetails=name;
  
 });

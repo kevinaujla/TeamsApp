@@ -39,10 +39,6 @@ angular.module('App.tasksController', [])
   	$uibModalInstance.close();
   };
 
-  $scope.ok = function () {
-    $uibModalInstance.close();
-  };
-
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };

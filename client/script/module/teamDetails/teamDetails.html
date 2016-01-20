@@ -20,14 +20,16 @@
         <div ng-repeat="user in teamDetails.userName" class="tdModalFont">
         <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{user}}
         </div>
+        <p ng-show="teamDetails.userName.length === 0">No Users Added</p>
 
         <h3 class="tdModalFont">Tasks
         <a href="" ng-controller="tasksController" ng-click="open('sm', teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
         </h3>
 
-        <div ng-repeat="tasks in teamDetails.tasks" class="tdModalFont">
-        <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{tasks}}
+        <div ng-repeat="task in teamDetails.tasks" class="tdModalFont">
+        <a href="" ng-controller="teamDetailsController" ng-click="taskComplete(task, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{task}}
         </div>
+        <p ng-show="teamDetails.tasks.length === 0">0 Task Assigned</p>
 
     </div>
          </div>

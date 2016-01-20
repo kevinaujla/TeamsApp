@@ -21,4 +21,6 @@ module.exports = function(app){
 
  app.post('/createTask', teamsController.createTask);
 
+ app.post('/taskComplete', teamsController.taskComplete);
+
 };
