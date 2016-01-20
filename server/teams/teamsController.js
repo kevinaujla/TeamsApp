@@ -12,8 +12,6 @@ module.exports = {
     Retrieve Team Info
   ***/
   getTeamInfo : function(req, res, next){
-    // Console Log
-    // console.log('Get Team Info : ', req.query);
     // Create Promise
     var findTeam = Q.nbind(Team.find, Team);
     // Mongoose Query
@@ -23,8 +21,6 @@ module.exports = {
           // Propogate Error to Client
           throw(new Error('Team could not be found'));
         } else {
-          // Console Log
-          // console.log('Teams retreived from DB : ', Team);
           // Propogate Data to Client
           res.send(Team);
         }
@@ -38,11 +34,6 @@ module.exports = {
     Create New Team
   ***/
   createTeams : function(req, res, next) {
-    // Console Log
-    // console.log('CREATE NEW TEAM');
-
-    // console.log('req : ', req.body);
-
     // Create Promise
     var findOne = Q.nbind(Team.findOne, Team); // find team in DB
     var create = Q.nbind(Team.create, Team); // create new team in DB
@@ -62,29 +53,21 @@ module.exports = {
         }
       })
       .then(function(newTeamCreated){
-        // Console Log
-        res.status(200).send();
-        // console.log('New Team Stored in DB : ', newTeamCreated);
+        res.json(newTeamCreated);
       })
   },
 
   addUser : function(req, res, next) {
-
-    // console.log('add new user');
-
-    // console.log('req :', req.body);
-
     // Create Promise
     var findTeam = Q.nbind(Team.findOne, Team);
     // Mongoose Query
     findTeam({'teamName' : req.body.team })
       .then(function(team) {
-
         // Create New Object
         var userUpdate = {
           userName : req.body.user,
         };
-
+        
         var update = Q.nbind(Team.findByIdAndUpdate, Team);
 
         return update(team._id, {
@@ -126,7 +109,6 @@ module.exports = {
 
       })
       .then(function(data){
-        console.log('DATA AFTER : ', data);
         res.json(data);
       })
       .catch(function(err){

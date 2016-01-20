@@ -9,7 +9,6 @@ angular.module('App.teamDetailsController', [])
 
 .controller('teamDetailsController', function ($scope, $uibModal, teamFactory) {
 
-
   	$scope.animationsEnabled = true;
 
 	  $scope.open = function (size, name) {
@@ -40,7 +39,10 @@ angular.module('App.teamDetailsController', [])
 
    $scope.remove=function(user, team){
     console.log("remove:", user, team);
-    teamFactory.removeUser(user, team);
+    teamFactory.removeUser(user, team)
+    .then(function(data){
+      console.log("remove sucess:",data);
+    });
   };
 
   $scope.teamDetails=name;

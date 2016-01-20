@@ -7,6 +7,7 @@
 
 angular.module('App', [
   'ngAnimate',
+  'ngFileUpload',
 	'ui.router',
   'ui.bootstrap',
   'App.usersController',
@@ -14,7 +15,8 @@ angular.module('App', [
 	'App.addTeamController',
   'App.teamDetailsController',
   'App.chatRoomController',
-  'App.teamFactory'
+  'App.teamFactory',
+  'App.loadingService'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {

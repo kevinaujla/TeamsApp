@@ -33,7 +33,7 @@ angular.module('App.usersController', [])
   $scope.addUser=function(){
   	teamFactory.addUser($scope.userName, name)
     .then(function(){
-      console.log("user created");
+      console.log("user created:", $scope.userName);
     });
   	$uibModalInstance.close();
   };

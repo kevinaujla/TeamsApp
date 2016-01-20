@@ -21,16 +21,15 @@ angular.module('App.addTeamController', [])
 	  };
 })
 
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, teamFactory, $window) {
+.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, teamFactory, $window, loadingService) {
 
   $scope.teamName=null;
   $scope.teamDetails=null;
 
   $scope.createTeam=function(){
   	teamFactory.createTeam($scope.teamName, $scope.teamDetails)
-    .then(function(){
-      console.log("team created");
-      $window.location.reload();
+    .then(function(data){
+      loadingService.teamDetails.push(data);
     });
   	$uibModalInstance.close();
   };
