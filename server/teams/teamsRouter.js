@@ -19,4 +19,6 @@ module.exports = function(app){
 
  app.post('/removeUser', teamsController.removeUser);
 
+ app.post('/createTask', teamsController.createTask);
+
 };

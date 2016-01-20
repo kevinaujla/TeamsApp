@@ -6,7 +6,8 @@ var teamSchema = new Schema({
 
  teamName : String,
  teamDetails: String,
- userName: [String]
+ userName: [String],
+ tasks: [String]
 
 });
 

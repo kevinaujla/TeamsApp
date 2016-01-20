@@ -14,6 +14,7 @@ angular.module('App', [
   'App.sideBarController',
 	'App.addTeamController',
   'App.teamDetailsController',
+  'App.tasksController',
   'App.chatRoomController',
   'App.teamFactory',
   'App.loadingService'
@@ -41,6 +42,12 @@ angular.module('App', [
       templateUrl: 'script/module/users/users.html',
       controller: 'usersController',
       controllerAs: 'usersController'
+    })
+    .state('tasksController', {
+      url: '/tasksController',
+      templateUrl: 'script/module/tasks/tasks.html',
+      controller: 'tasksController',
+      controllerAs: 'tasksController'
     })
     .state('sideBarController', {
       url: '/',

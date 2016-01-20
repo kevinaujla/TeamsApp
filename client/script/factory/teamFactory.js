@@ -20,7 +20,20 @@ angular.module('App.teamFactory', [])
       .then(function (resp) {
         return resp.data;
       });
-  };	
+  };
+
+  var createTask = function (task, team) {
+    var obj = {task : task, team: team};
+    console.log('sending team : ', obj);
+    return $http({
+        method: 'POST',
+        url: '/api/teams/createTask',
+        data: obj
+      })
+      .then(function (resp) {
+        return resp.data;
+      });
+  };  	
 
   var addUser = function(user, team) {
     var obj = {user : user, team: team};
@@ -60,6 +73,7 @@ angular.module('App.teamFactory', [])
 
   return {
     createTeam: createTeam,
+    createTask: createTask,
     addUser: addUser,
     getTeamInfo: getTeamInfo,
     removeUser: removeUser

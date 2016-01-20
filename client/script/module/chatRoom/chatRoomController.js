@@ -10,8 +10,8 @@ angular.module('App.chatRoomController', [])
 .controller('chatRoomController', function ($scope, teamFactory, Upload, $timeout) {
 
 	$scope.fileUpload=function(files){
-	  $scope.files = files;
-	  console.log("files:",files.name);
+	  $scope.files = files[0].name;
+	  console.log("files:", files);
        angular.forEach(files, function(file) {
             file.upload = Upload.upload({
                 url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
@@ -31,7 +31,6 @@ angular.module('App.chatRoomController', [])
             });
         });
 	}
-
 });
 
 

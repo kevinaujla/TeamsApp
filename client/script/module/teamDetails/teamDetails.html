@@ -21,6 +21,14 @@
         <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{user}}
         </div>
 
+        <h3 class="tdModalFont">Tasks
+        <a href="" ng-controller="tasksController" ng-click="open('sm', teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
+        </h3>
+
+        <div ng-repeat="tasks in teamDetails.tasks" class="tdModalFont">
+        <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{tasks}}
+        </div>
+
     </div>
          </div>
 

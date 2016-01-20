@@ -26,7 +26,7 @@ angular.module('App.usersController', [])
 	  };
 })
 
-.controller('UserModalCtrl', function ($scope, $uibModalInstance, teamFactory, name) {
+.controller('UserModalCtrl', function ($scope, $uibModalInstance, teamFactory, name, loadingService) {
 
   $scope.userName=null;
 
@@ -34,6 +34,7 @@ angular.module('App.usersController', [])
   	teamFactory.addUser($scope.userName, name)
     .then(function(){
       console.log("user created:", $scope.userName);
+      console.log(loadingService.teamDetails);
     });
   	$uibModalInstance.close();
   };

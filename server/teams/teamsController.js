@@ -57,6 +57,34 @@ module.exports = {
       })
   },
 
+  createTask : function(req, res, next){
+    // Create Promise
+    var findTeam = Q.nbind(Team.findOne, Team);
+    // Mongoose Query
+    console.log("TASKKK");
+    findTeam({'teamName' : req.body.team })
+      .then(function(team) {
+        
+        var update = Q.nbind(Team.findByIdAndUpdate, Team);
+
+        return update(team._id, {
+          tasks : team.tasks.concat([req.body.task])
+        });
+
+        console.log('Update....');
+
+      })
+      .then(function(data){
+        console.log('DATA AFTER : ', data);
+        res.json(data);
+      })
+      .catch(function(err){
+        // Propogate Error to Client
+        res.status(404).send({error : err.message});
+      });
+
+  },
+
   addUser : function(req, res, next) {
     // Create Promise
     var findTeam = Q.nbind(Team.findOne, Team);
