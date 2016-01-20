@@ -31,10 +31,16 @@ angular.module('App.usersController', [])
   $scope.userName=null;
 
   $scope.addUser=function(){
-  	teamFactory.addUser($scope.userName, name)
+    teamFactory.addUser($scope.userName, name)
     .then(function(){
-      console.log("user created:", $scope.userName);
-      console.log(loadingService.teamDetails);
+      var obj=loadingService.teamDetails;
+      for(var i=0; i<obj.length; i++){
+        for(var key in obj[i]){
+          if(obj[i][key] === name){
+            obj[i]["userName"].push($scope.userName);
+          }
+        }
+      } 
     });
   	$uibModalInstance.close();
   };

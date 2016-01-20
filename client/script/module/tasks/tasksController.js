@@ -34,7 +34,14 @@ angular.module('App.tasksController', [])
   	console.log("hi");
   	teamFactory.createTask($scope.task, name)
     .then(function(){
-      console.log("task created:", $scope.task);
+      var obj=loadingService.teamDetails;
+      for(var i=0; i<obj.length; i++){
+        for(var key in obj[i]){
+          if(obj[i][key] === name){
+            obj[i]["tasks"].push($scope.task);
+          }
+        }
+      } 
     });
   	$uibModalInstance.close();
   };
