@@ -9,15 +9,13 @@ angular.module('App.usersController', [])
 
 .controller('usersController', function ($scope, $uibModal) {
 
-  	$scope.animationsEnabled = true;
-
 	  $scope.open = function (size, name) {
 	    var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/users/users.html',
 	      controller: 'UserModalCtrl',
 	      size: size,
         resolve: {
+          //resolve used to pass data from controller to modal
           name: function() {
             return name;
           }
@@ -33,6 +31,7 @@ angular.module('App.usersController', [])
   $scope.addUser=function(){
     teamFactory.addUser($scope.userName, name)
     .then(function(){
+      //iterate through array for object with same team to push new user into scope for digest cycle to update view
       var obj=loadingService.teamDetails;
       for(var i=0; i<obj.length; i++){
         for(var key in obj[i]){
@@ -43,10 +42,6 @@ angular.module('App.usersController', [])
       } 
     });
   	$uibModalInstance.close();
-  };
-
-  $scope.ok = function () {
-    $uibModalInstance.close();
   };
 
   $scope.cancel = function () {

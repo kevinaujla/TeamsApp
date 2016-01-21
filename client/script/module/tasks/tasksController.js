@@ -9,15 +9,13 @@ angular.module('App.tasksController', [])
 
 .controller('tasksController', function ($scope, $uibModal) {
 
-  	$scope.animationsEnabled = true;
-
 	  $scope.open = function (size, name) {
 	    var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/tasks/tasks.html',
 	      controller: 'tasksModalCtrl',
 	      size: size,
         resolve: {
+          //resolve used to pass data from controller to modal
           name: function() {
             return name;
           }
@@ -33,6 +31,7 @@ angular.module('App.tasksController', [])
   $scope.createTask=function(){
   	teamFactory.createTask($scope.task, name)
     .then(function(){
+      //iterate through array for object with same team to push task into scope for digest cycle to update view
       var obj=loadingService.teamDetails;
       for(var i=0; i<obj.length; i++){
         for(var key in obj[i]){

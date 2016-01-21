@@ -7,7 +7,7 @@
     color: black;
     margin: 0;
     text-align: center;
-    font-family: visby;
+    font-family: visby2;
     font-size: 32px;
     padding: 0px;
 }
@@ -16,11 +16,22 @@ h3.tdModalFont {
     color: black;
     margin-bottom: 0px;
     margin-top: 10px;
+    font-family: visby1;
+    font-size: 24px;
+}
+
+h3.teamName {
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-family: visby;
+    font-size: 38px;
 }
 
 h5.tdModalFont {
     color: black;
     margin-top: 0px;
+    font-family: visby2;
 }
 
 a.tdModalFont {
@@ -41,7 +52,38 @@ a.glyphicon.glyphicon-ok-sign{
     color: #24A524;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #24A524;
+    border-color: #24A524;
+    font-family: visby;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: green;
+    border-color: green;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: grey;
+    border-color: grey;
+    font-family: visby;
+}
+
+.btn-warning:hover{
+    color: #fff;
+    background-color: rgb(108, 107, 107);
+    border-color: rgb(108, 107, 107);
+}
+
 a.glyphicon.glyphicon-minus-sign:hover{
     text-decoration: none;
     color:red;
+}
+
+p {
+    margin: 0 0 10px;
+    font-family: visby;
 }

@@ -71,8 +71,6 @@ module.exports = {
           tasks : team.tasks.concat([req.body.task])
         });
 
-        console.log('Update....');
-
       })
       .then(function(data){
         console.log('DATA AFTER : ', data);
@@ -96,8 +94,6 @@ module.exports = {
         if (indexToRemove > -1) {
           team.tasks.splice(indexToRemove, 1);
         }
-
-        console.log('replace with : ', team.tasks);
 
         var update = Q.nbind(Team.findByIdAndUpdate, Team);
 
@@ -131,8 +127,6 @@ module.exports = {
         return update(team._id, {
           userName : team.userName.concat([req.body.user])
         });
-
-        console.log('Update....');
 
       })
       .then(function(data){
@@ -173,6 +167,13 @@ module.exports = {
         // Propogate Error to Client
           res.status(404).send({error : err.message});
       });
+  },
+
+  storeDoc : function(req, res, next){
+
+    console.log("IN STORE DOC:", req);
+
+
   }
 
 };

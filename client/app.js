@@ -6,10 +6,9 @@
 // */
 
 angular.module('App', [
-  'ngAnimate',
+  'ui.bootstrap',
   'ngFileUpload',
 	'ui.router',
-  'ui.bootstrap',
   'App.usersController',
   'App.sideBarController',
 	'App.addTeamController',
@@ -29,8 +28,7 @@ angular.module('App', [
     .state('addTeamController', {
       url: '/addTeamController',
       templateUrl: 'script/module/addTeam/addTeamController.html',
-      controller: 'addTeamController',
-      controllerAs: 'addTeamController',
+      controller: 'addTeamController'
     })
     .state('teamDetailsController', {
       url: '/teamDetailsController',

@@ -9,15 +9,13 @@ angular.module('App.teamDetailsController', [])
 
 .controller('teamDetailsController', function ($scope, $uibModal, teamFactory) {
 
-  	$scope.animationsEnabled = true;
-
 	  $scope.open = function (size, name) {
 	    var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/teamDetails/teamDetails.html',
 	      controller: 'ModalCtrl',
 	      size: size,
         resolve: {
+          //resolve used to pass data from controller to modal
           name: function() {
             return name;
           }
@@ -28,6 +26,8 @@ angular.module('App.teamDetailsController', [])
 })
 
 .controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory, name, loadingService) {
+
+  $scope.teamDetails=name; //store name(object of team details) into scope
 
   $scope.ok = function () {
     $uibModalInstance.close();
@@ -40,7 +40,7 @@ angular.module('App.teamDetailsController', [])
    $scope.remove=function(user, team){
     teamFactory.removeUser(user, team)
     .then(function(){
-
+      //iterate through array for object with same team to remove user from scope for digest cycle to update view
       var obj=loadingService.teamDetails;
       for(var i=0; i<obj.length; i++){
         for(var key in obj[i]){
@@ -59,7 +59,7 @@ angular.module('App.teamDetailsController', [])
   $scope.taskComplete=function(task, team){
     teamFactory.taskComplete(task, team)
     .then(function(){
-
+      //iterate through array for object with same team to remove task from scope for digest cycle to update view
       var obj=loadingService.teamDetails;
       for(var i=0; i<obj.length; i++){
         for(var key in obj[i]){
@@ -74,7 +74,5 @@ angular.module('App.teamDetailsController', [])
 
     });
   };
-
-  $scope.teamDetails=name;
  
 });

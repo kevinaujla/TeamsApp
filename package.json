@@ -4,7 +4,7 @@
   "description": "TradeShift Candidate Exercise",
   "main": "Gulpfile.js",
   "dependencies": {
-    "body-parser": "1.14.1", 
+    "body-parser": "1.14.1",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",

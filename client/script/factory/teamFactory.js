@@ -1,7 +1,7 @@
 /*
 
 teamFactory.js
-handles http request for team controller
+handles all http request for controllers
 
 */
 

@@ -9,11 +9,8 @@ angular.module('App.addTeamController', [])
 
 .controller('addTeamController', function ($scope, $uibModal) {
 
-  	$scope.animationsEnabled = true;
-
 	  $scope.open = function (size) {
 	    var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'script/module/addTeam/addTeamController.html',
 	      controller: 'ModalInstanceCtrl',
 	      size: size
@@ -29,6 +26,7 @@ angular.module('App.addTeamController', [])
   $scope.createTeam=function(){
   	teamFactory.createTeam($scope.teamName, $scope.teamDetails)
     .then(function(data){
+      //push new team into scope so the digest cycle can update this change onto the view
       loadingService.teamDetails.push(data);
     });
   	$uibModalInstance.close();

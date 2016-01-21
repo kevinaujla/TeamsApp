@@ -9,7 +9,15 @@
   src: url('font/VisbyCF-Bold.ttf');
 }
 
-@import "body";
+@font-face {
+  font-family: visby1;
+  src: url('font/VisbyCF-DemiBoldOblique.ttf');
+}
+
+@font-face {
+  font-family: visby2;
+  src: url('font/VisbyCF-MediumOblique.ttf');
+}
 
 @import "chatRoom";
 

@@ -10,6 +10,7 @@ angular.module('App.sideBarController', [])
 .controller('sideBarController', function ($scope, teamFactory, loadingService) {
 
 	   $scope.loadTeams = function () {
+      //load team data to store into scope
     	teamFactory.getTeamInfo()
       	.then(function (teams) {
   		$scope.teamDetails=teams;

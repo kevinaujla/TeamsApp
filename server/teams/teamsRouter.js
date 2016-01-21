@@ -23,4 +23,6 @@ module.exports = function(app){
 
  app.post('/taskComplete', teamsController.taskComplete);
 
+ app.post('/doc', teamsController.storeDoc);
+
 };
