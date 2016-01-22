@@ -73,7 +73,6 @@ module.exports = {
 
       })
       .then(function(data){
-        console.log('DATA AFTER : ', data);
         res.json(data);
       })
       .catch(function(err){
@@ -130,7 +129,6 @@ module.exports = {
 
       })
       .then(function(data){
-        console.log('DATA AFTER : ', data);
         res.json(data);
       })
       .catch(function(err){
@@ -151,14 +149,11 @@ module.exports = {
           team.userName.splice(indexToRemove, 1);
         }
 
-        console.log('replace with : ', team.userName);
-
         var update = Q.nbind(Team.findByIdAndUpdate, Team);
 
         return update(team._id, {
           userName : team.userName
         });
-
       })
       .then(function(data){
         res.json(data);
@@ -170,7 +165,6 @@ module.exports = {
   },
 
   message : function(req, res, next){
-
     // Create Promise
     var findChat = Q.nbind(Chat.findOne, Chat);
     var create = Q.nbind(Chat.create, Chat); // create new team in DB
@@ -178,9 +172,6 @@ module.exports = {
     findChat({'chatRoom' : "teamsApp" })
       .then(function (teamsApp) {
         if(teamsApp) {
-
-          console.log('teamsApp found : ');
-
           // Create New Object
           var messageUpdate = {
             messages : req.body.message,
@@ -195,8 +186,6 @@ module.exports = {
         });
 
         } else {
-
-          console.log('create new Chat : ');
           // Create Object
           var newChat = {
             chatRoom : "teamsApp",
@@ -235,9 +224,6 @@ module.exports = {
   },
 
   storeDoc : function(req, res, next){
-
-    console.log("IN STORE DOC:", req);
-
 
   }
 

@@ -41,10 +41,9 @@ angular.module('App.chatRoomController', [])
     };
     
 	// $scope.fileUpload=function(files){
+        
 	//   $scope.files = files[0];
 	//   console.log("files:", files);
-
-
 
  //       angular.forEach(files, function(file) {
  //            file.upload = Upload.upload({
@@ -69,8 +68,6 @@ angular.module('App.chatRoomController', [])
  //            });
 
  //        });
-
-
 
 	// }
 

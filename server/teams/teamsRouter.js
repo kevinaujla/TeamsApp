@@ -9,8 +9,6 @@ var teamsController = require('./teamsController.js');
 ***/
 module.exports = function(app){
 
-	console.log('TEAMS ROUTER');
-
  app.get('/', teamsController.getTeamInfo);
 
  app.post('/create', teamsController.createTeams);

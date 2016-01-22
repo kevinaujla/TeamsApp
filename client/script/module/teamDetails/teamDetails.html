@@ -1,38 +1,31 @@
 <div>
         <div class="modal-header">
-
             <h3 class="modal-title">Team Details</h3>
-
         </div>
+
         <div class="modal-body">
-           
-  
-        <div>
+            <div>
+                <h3 class="teamName">{{teamDetails.teamName}}</h3>
+                <h5 class="tdModalFont">{{teamDetails.teamDetails}}</h5>
+                <h3 class="tdModalFont">Users
+                 <a href="" ng-controller="usersController" ng-click="open('sm', teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
+                 </h3>
 
-        <h3 class="teamName">{{teamDetails.teamName}}</h3>
-        <h5 class="tdModalFont">{{teamDetails.teamDetails}}</h5>
-        
+                <div ng-repeat="user in teamDetails.userName" class="tdModalFont">
+                 <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{user}}
+                </div>
+                <p ng-show="teamDetails.userName.length === 0">No Users Added</p>
 
-        <h3 class="tdModalFont">Users
-        <a href="" ng-controller="usersController" ng-click="open('sm', teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
-        </h3>
+                <h3 class="tdModalFont">Tasks
+                <a href="" ng-controller="tasksController" ng-click="open(size, teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
+                </h3>
 
-        <div ng-repeat="user in teamDetails.userName" class="tdModalFont">
-        <a href="" ng-controller="teamDetailsController" ng-click="remove(user, teamDetails.teamName)" class="glyphicon glyphicon-minus-sign"></a>{{user}}
-        </div>
-        <p ng-show="teamDetails.userName.length === 0">No Users Added</p>
-
-        <h3 class="tdModalFont">Tasks
-        <a href="" ng-controller="tasksController" ng-click="open(size, teamDetails.teamName)" class="glyphicon glyphicon-plus-sign"></a>
-        </h3>
-
-        <p ng-show="teamDetails.tasks.length > 0">{{teamDetails.tasks.length}} Task(s) To Complete</p>
-        <div ng-repeat="task in teamDetails.tasks" class="tdModalFont">
-        <a href="" ng-controller="teamDetailsController" ng-click="taskComplete(task, teamDetails.teamName)" class="glyphicon glyphicon-ok-sign"></a>{{task}}
-        </div>
-        <p ng-show="teamDetails.tasks.length === 0">All Task Complete</p>
-
-    </div>
+                <p ng-show="teamDetails.tasks.length > 0">{{teamDetails.tasks.length}} Task(s) To Complete</p>
+                <div ng-repeat="task in teamDetails.tasks" class="tdModalFont">
+                <a href="" ng-controller="teamDetailsController" ng-click="taskComplete(task, teamDetails.teamName)" class="glyphicon glyphicon-ok-sign"></a>{{task}}
+                </div>
+                <p ng-show="teamDetails.tasks.length === 0">All Task Complete</p>
+            </div>
          </div>
 
         <div class="modal-footer">

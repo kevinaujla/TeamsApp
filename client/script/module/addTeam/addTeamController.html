@@ -1,22 +1,17 @@
 <div>
-        <div class="modal-header">
-
-            <h3 class="modal-title">Create Team</h3>
-
+    <div class="modal-header">
+        <h3 class="modal-title">Create Team</h3>
+    </div>
+    <div class="modal-body">
+         <div class="form-group">
+        <label>Team Name</label>
+        <input type="text" ng-model="teamName" class="form-control" placeholder="Enter Team Name">
+         <label>Team Details</label>
+        <input type="text" ng-model="teamDetails" class="form-control" placeholder="Enter Team Details">
         </div>
-        <div class="modal-body">
-
-             <div class="form-group">
-            <label>Team Name</label>
-            <input type="text" ng-model="teamName" class="form-control" placeholder="Enter Team Name">
-             <label>Team Details</label>
-            <input type="text" ng-model="teamDetails" class="form-control" placeholder="Enter Team Details">
-            </div>
-            </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="createTeam()">Create Team</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
-
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="createTeam()">Create Team</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
 </div>
