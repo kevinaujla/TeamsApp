@@ -23,6 +23,10 @@ module.exports = function(app){
 
  app.post('/taskComplete', teamsController.taskComplete);
 
+ app.post('/message', teamsController.message);
+
+ app.get('/getChatData', teamsController.getChatData);
+
  app.post('/doc', teamsController.storeDoc);
 
 };

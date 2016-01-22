@@ -28,7 +28,7 @@ angular.module('App.teamDetailsController', [])
 .controller('ModalCtrl', function ($scope, $uibModalInstance, teamFactory, name, loadingService) {
 
   $scope.teamDetails=name; //store name(object of team details) into scope
-
+  
   $scope.ok = function () {
     $uibModalInstance.close();
   };

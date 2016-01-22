@@ -1,6 +1,18 @@
+<div ng-init="loadChat()">
+
+	<div ng-repeat="time in chatDates">
+    <h5 class="time">{{time | date:'mediumTime'}}</h5>
+    <h3 class="message">{{chatMessages[$index]}}</h3>
+  </div>
+
+<div>
+
 <div class="input-group input-group-lg">
   <a href="" class="input-group-addon" id="sizing-addon1" ngf-select="fileUpload($files)" ngf-max-height="1000" ngf-max-size="1MB">
   	<div class="glyphicon glyphicon-paperclip"></div>
   </a>
-  <input type="text"  class="form-control" placeholder="Enter Message" aria-describedby="sizing-addon1">
+  <input type="text"  class="form-control" ng-model="chatMessage" placeholder="Enter Message" aria-describedby="sizing-addon1">
+  <a href="" class="input-group-addon" id="sizing-addon1">
+  	<div class="glyphicon glyphicon-comment" ng-click="message()"></div>
+  </a>
 </div>

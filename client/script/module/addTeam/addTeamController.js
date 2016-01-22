@@ -9,13 +9,13 @@ angular.module('App.addTeamController', [])
 
 .controller('addTeamController', function ($scope, $uibModal) {
 
-	  $scope.open = function (size) {
-	    var modalInstance = $uibModal.open({
-	      templateUrl: 'script/module/addTeam/addTeamController.html',
-	      controller: 'ModalInstanceCtrl',
-	      size: size
-	    });
-	  };
+	 $scope.open = function (size) {
+	   var modalInstance = $uibModal.open({
+      templateUrl: 'script/module/addTeam/addTeamController.html',
+      controller: 'ModalInstanceCtrl',
+      size: size
+    });
+  };
 })
 
 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, teamFactory, $window, loadingService) {

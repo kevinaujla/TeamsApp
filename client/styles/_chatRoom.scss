@@ -1,13 +1,33 @@
 .col-md-9{
-    height:100vh;
+    height:92vh;
 }
 
 .input-group.input-group-lg {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding: 0px 30px 5px 0px;
+    width: 70%;
 }
 
 .glyphicon.glyphicon-paperclip {
     color: black;
+}
+
+.scroll{
+	overflow: auto;
+}
+
+h3.message {
+    color: black;
+    font-family: visby;
+    font-size: 28px;
+    margin: 0;
+}
+
+h5.time {
+    color: black;
+    font-family: visby2;
+    font-size: 14px;
+    padding-top: 14px;
+    margin: 0;
 }

@@ -1,7 +1,7 @@
 /*
 
 loadingService.js
-used to share data of teamDetails across controllers
+used to share data across controllers
 
 */
 

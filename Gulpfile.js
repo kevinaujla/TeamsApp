@@ -6,6 +6,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
 var autoprefixer = require('gulp-autoprefixer');
+var karma = require('karma').Server;
 
 // the paths to our app files
 var paths = {
@@ -58,6 +59,13 @@ gulp.task('nodemon', function () {
       'NODE_ENV': 'development'
     }
   });
+});
+
+gulp.task('test', function(done){
+  new karma({
+    configFile: __dirname + '/testing/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 // Watcher

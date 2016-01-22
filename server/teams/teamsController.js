@@ -2,6 +2,7 @@
 //Save or retreive the existing team to/from the database
 // External Resources
 var Team = require('./teamModel.js'),
+    Chat = require('./chatModel.js'),
     Q = require('q');
 
 module.exports = {
@@ -61,7 +62,6 @@ module.exports = {
     // Create Promise
     var findTeam = Q.nbind(Team.findOne, Team);
     // Mongoose Query
-    console.log("TASKKK");
     findTeam({'teamName' : req.body.team })
       .then(function(team) {
         
@@ -167,6 +167,71 @@ module.exports = {
         // Propogate Error to Client
           res.status(404).send({error : err.message});
       });
+  },
+
+  message : function(req, res, next){
+
+    // Create Promise
+    var findChat = Q.nbind(Chat.findOne, Chat);
+    var create = Q.nbind(Chat.create, Chat); // create new team in DB
+    // Mongoose Query
+    findChat({'chatRoom' : "teamsApp" })
+      .then(function (teamsApp) {
+        if(teamsApp) {
+
+          console.log('teamsApp found : ');
+
+          // Create New Object
+          var messageUpdate = {
+            messages : req.body.message,
+            times : req.body.time
+          };
+        
+        var update = Q.nbind(Chat.findByIdAndUpdate, Chat);
+
+        return update(teamsApp._id, {
+          messages : teamsApp.messages.concat([req.body.message]),
+          times : teamsApp.times.concat([req.body.time])
+        });
+
+        } else {
+
+          console.log('create new Chat : ');
+          // Create Object
+          var newChat = {
+            chatRoom : "teamsApp",
+            messages : req.body.message,
+            times : req.body.time
+          };
+          return create(newChat);
+        }
+      })
+      .then(function(data){
+        res.json(data);
+        console.log(data);
+      })
+
+  },
+
+  getChatData : function(req, res, next){
+    // Create Promise
+    var findChat = Q.nbind(Chat.find, Chat);
+    // Mongoose Query
+    findChat({ 'Chat' : req.query.chatRoom})
+      .then(function(Chat){
+        if(!Chat) {
+          // Propogate Error to Client
+          throw(new Error('Chat could not be found'));
+        } else {
+          // Propogate Data to Client
+          res.send(Chat);
+        }
+      })
+      .catch(function(err){
+        // Propogate Error to Client
+        res.status(404).send({error : err.message});
+      });
+
   },
 
   storeDoc : function(req, res, next){

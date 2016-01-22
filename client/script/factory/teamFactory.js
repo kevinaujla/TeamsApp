@@ -79,13 +79,37 @@ angular.module('App.teamFactory', [])
       });
   };
 
+  var chatMessage = function(message, time){
+    var obj = {message : message, time : time};
+    return $http({
+        method: 'POST',
+        url: 'api/teams/message',
+        data: obj
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  };
+
+  var getChatData = function(){
+    return $http({
+        method: 'GET',
+        url: '/api/teams/getChatData',
+      })
+      .then(function (resp) {
+        return resp.data;
+      });
+    };
+
   return {
     createTeam: createTeam,
     createTask: createTask,
     taskComplete: taskComplete,
     addUser: addUser,
     getTeamInfo: getTeamInfo,
-    removeUser: removeUser
+    removeUser: removeUser,
+    chatMessage: chatMessage,
+    getChatData: getChatData
   };
 
 }]);
